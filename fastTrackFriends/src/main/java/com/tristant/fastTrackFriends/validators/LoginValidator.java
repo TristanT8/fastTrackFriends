@@ -30,8 +30,6 @@ public class LoginValidator {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-    
-    
+	}    
 }
 
