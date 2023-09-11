@@ -12,6 +12,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -21,15 +25,26 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank(message="Username is required")
+	@Size(min=3, max=30, message="Username must be between 3 and 30 characters")
 	private String username;
 	
+	@NotBlank(message="Name is required!")
+    @Size(min=3, message="Name must be at least 3 characters")
 	private String name;
 	
+    @NotBlank(message="Email is required!")
+    @Email(message="Invalid Credentials")
 	private String email;
 	
+    @NotBlank(message="Password is required!")
+    @Size(min=8, message="Password must be at least 8 characters")
 	private String password;
 	
-	private String confirmPassword;
+    @Transient
+    @NotBlank(message="Confirm Password is required!")
+    @Size(min=8, message="Confirm Password must be at least 8 characters")
+	private String confirm;
 	
 	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -79,11 +94,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getConfirmPassword() {
-		return confirmPassword;
+	public String getConfirm() {
+		return confirm;
 	}
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
+	public void setConfirm(String confirmPassword) {
+		this.confirm = confirmPassword;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
