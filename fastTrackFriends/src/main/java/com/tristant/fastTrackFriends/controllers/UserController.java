@@ -76,16 +76,3 @@ public class UserController {
 	}	
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
