@@ -13,13 +13,11 @@
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <meta charset="ISO-8859-1">
-<title>Fast Track Friends</title>
+<title>Fast Track Friends Home</title>
 </head>
 <body>
 	<h3>
-		Welcome,
-		<c:out value="${currentUser.name}" />
-		!
+		Welcome, <c:out value="${currentUser.name}"/>!
 	</h3>
 
 </body>

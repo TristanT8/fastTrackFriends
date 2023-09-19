@@ -58,7 +58,7 @@ public class UserController {
 	@GetMapping("/home")
 	public String home (Model homeModel, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
-		System.out.println("User IF: " + userId);
+		System.out.println("User ID: " + userId);
 		
 		if (userId != null) {
 			User currentUser = this.userServ.findById(userId);
