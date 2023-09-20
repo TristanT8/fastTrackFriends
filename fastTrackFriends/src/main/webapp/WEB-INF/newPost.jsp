@@ -20,7 +20,9 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
-				<h3>Hello!</h3>
+				<h3>Create your new post below!</h3>
+				
+			
 			
 			</div>
 		</div>

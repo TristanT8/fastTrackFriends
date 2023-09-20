@@ -34,6 +34,10 @@ public class Post {
 	@Size(min = 5)
 	private String circuit;
 	
+	@NotBlank(message = "Post content must be at least 10 characters")
+	@Size(min = 10)
+	private String postContent;
+	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -89,5 +93,11 @@ public class Post {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public String getPostContent() {
+		return postContent;
+	}
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
 	}
 }
