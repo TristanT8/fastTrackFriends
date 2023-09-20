@@ -1,5 +1,7 @@
 package com.tristant.fastTrackFriends.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.tristant.fastTrackFriends.models.Post;
 import com.tristant.fastTrackFriends.models.User;
+import com.tristant.fastTrackFriends.services.PostService;
 import com.tristant.fastTrackFriends.services.UserService;
 import com.tristant.fastTrackFriends.validators.LoginValidator;
 
@@ -20,6 +24,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userServ;
+	
+	@Autowired
+	private PostService postServ;
 	
 	@GetMapping("/")
 	public String loginRegister(Model loginModel) {
@@ -64,7 +71,8 @@ public class UserController {
 			User currentUser = this.userServ.findById(userId);
 			homeModel.addAttribute("currentUser", currentUser);
 			
-			
+			List<Post> allPosts = postServ.getAllPosts();
+			homeModel.addAttribute("allPosts", allPosts);
 		}
 		return "home.jsp";
 	}

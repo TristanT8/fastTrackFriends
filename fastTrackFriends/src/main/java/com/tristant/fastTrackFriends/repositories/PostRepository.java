@@ -13,11 +13,11 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 	
 	List<Post> findAll();
 	
-	List<Post> findByNameContaining(String driver);
+	List<Post> findByDriverContaining(String driver);
 	
-	Optional<Post> findByName(String driver);
+	Optional<Post> findByDriver(String driver);
 	
-	Long countByNameContaining(String driver);
+	Long countByDriverContaining(String driver);
 	
-	Long deleteByNameContaining(String driver);
+	Long deleteByDriverContaining(String driver);
 }
