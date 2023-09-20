@@ -19,6 +19,20 @@
 	<h3>
 		Welcome, <c:out value="${currentUser.name}"/>!
 	</h3>
+	
+	<h5>All Posts Below:</h5>
 
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th class="col-md-3"> Driver: </th>
+				<th class="col-md-4"> Circuit: </th>
+				<th> Posted By: </th>
+				<th> Posted: </th>
+				<th> Actions: </th>
+			</tr>
+		</thead>
+	</table>
+	
 </body>
 </html>
