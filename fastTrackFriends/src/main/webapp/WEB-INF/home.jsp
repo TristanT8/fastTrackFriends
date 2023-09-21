@@ -32,6 +32,19 @@
 				<th> Actions: </th>
 			</tr>
 		</thead>
+		
+		<tbody>
+			<c:forEach var="post" items="${allPosts}">
+				<tr>
+					<td><c:out value="${post.driver}" /></td>
+					<td><c:out value="${post.circuit}" /></td>
+					<td><c:out value="${post.user.username}" /></td>
+					<td><c:out value="${post.createdAt}" /></td>
+					
+				</tr>
+			</c:forEach>		
+		</tbody>
+		
 	</table>
 	<div class="text-center">	
 		<a class="btn btn-outline-success" href="/post/add"> Create Post</a>

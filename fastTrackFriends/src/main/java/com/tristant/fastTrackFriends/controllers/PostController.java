@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -46,4 +47,21 @@ public class PostController {
 		postServ.createPost(post);
 		return "redirect:/home";
 	}
+	
+	@GetMapping("/edit/{postId}")
+	public String editPost(@PathVariable("postId") Long postId, Model model, HttpSession session) {
+		Post post = postServ.findById(postId);
+		User user = uServ.findById((Long)session.getAttribute("userId"));
+		if(post != null && post.getUser().getId().equals(user.getId())) {
+			model.addAttribute("post", post);
+			return "editPost.jsp";
+		} else {
+			return "redirect:/home";
+		}
+	}
+	
+	
+	
+	
+	
 }
