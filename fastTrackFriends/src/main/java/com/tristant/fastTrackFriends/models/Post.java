@@ -26,16 +26,16 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "Drivers name must be at least 5 characters")
-	@Size(min = 5)
+	@NotBlank(message = "Driver's name must not be blank")
+	@Size(min = 5, max = 2147483647, message = "Drivers name must be at least 5 characters")
 	private String driver;
 	
-	@NotBlank(message = "Circuit name must be at least 5 characters")
-	@Size(min = 5)
+	@NotBlank(message = "Circuit name must not be blank")
+	@Size(min = 5, max = 2147483647, message = "Circuit name must be at least 5 characters")
 	private String circuit;
 	
-	@NotBlank(message = "Post content must be at least 10 characters")
-	@Size(min = 10)
+	@NotBlank(message = "Post content must not be blank")
+	@Size(min = 10, max = 2147483647, message = "Post content must be at least 10 characters")
 	private String postContent;
 	
 	@Column(updatable=false)
