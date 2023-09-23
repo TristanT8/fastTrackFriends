@@ -68,6 +68,10 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Post> posts;
     
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Like> likes;
+
+    
     public User() {
     }
 	public Long getId() {
@@ -123,5 +127,11 @@ public class User {
 	}
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
+	}
+	public List<Like> getLikes() {
+		return likes;
+	}
+	public void setLikes(List<Like> likes) {
+		this.likes = likes;
 	}
 }

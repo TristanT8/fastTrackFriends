@@ -40,7 +40,7 @@ public class PostService {
 	
 	public Post updatePost(Post post) {
 		Post oldPost = this.findById(post.getId());
-		post.setDriver(oldPost.getDriver());
+		post.setUser(oldPost.getUser());
 		return this.postRepo.save(post);
 	}
 	

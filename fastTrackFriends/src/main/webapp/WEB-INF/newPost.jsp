@@ -21,25 +21,27 @@
 		<div class="row justify-content-center">
 			<div class="col-md-6">
 				<h3>Create your new post below!</h3>
-				<form:form action = "/post/created" method = "POST" modelAttribute="post">
+				<form:form action="/post/created" method = "POST" modelAttribute="post">
 					
 					<form:errors class="error text-danger" path="driver" />
 					<div class="form-group">
-					 	<label for="driver">Driver:</label>
+					 	<label for="driver">Driver Name:</label>
 					 	<form:input class="form-control" path="driver" />
 					</div>
 					<form:errors class="error text-danger" path="circuit" />
 					<div class="form-group">
-						<label for="circuit">Circuit:</label>
+						<label for="circuit">Circuit Name:</label>
 						<form:input class="form-control" path="circuit" />
 					</div>
 					<form:errors class="error text-danger" path="postContent" />
 					<div class="form-group">
 					 	<label for="postContent">Post Content:</label>
-					 	<form:input class="form-control" path="postContent" />
+                		<form:textarea path="postContent" class="form-control" rows="3"></form:textarea>
 					</div>
 					<div class="text-center">
 						<input class="btn btn-success" type="submit" value="Submit" />
+						<a class="btn btn-outline-warning" href="/post/return/home" >Return Home</a>
+						
 					</div>					 
 				</form:form>
 			</div>
