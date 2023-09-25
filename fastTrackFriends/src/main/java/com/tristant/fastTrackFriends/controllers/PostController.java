@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tristant.fastTrackFriends.models.Post;
 import com.tristant.fastTrackFriends.models.User;
@@ -77,6 +78,20 @@ public class PostController {
 		model.addAttribute("post", post);
 		return "viewPost.jsp";
 	}
+	
+    @GetMapping("/details")
+    public String showPostDetails(@RequestParam Long user_id, @RequestParam Long post_id, Model model) {
+        // Retrieve the user and post data from your services
+        User user = uServ.findById(user_id);
+        Post post = postServ.findById(post_id);
+
+        // Add the user and post data to the model for use in the JSP template
+        model.addAttribute("user", user);
+        model.addAttribute("post", post);
+
+        // Return the name of your JSP template (e.g., "post-details")
+        return "post-details";
+    }
 	
 	@GetMapping("/delete/{postId}")
 	public String deletePost(@PathVariable("postId") Long postId) {

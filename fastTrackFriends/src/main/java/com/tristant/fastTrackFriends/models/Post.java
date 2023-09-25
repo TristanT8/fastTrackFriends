@@ -56,6 +56,9 @@ public class Post {
         this.updatedAt = new Date();
     }
     
+    @Column(name = "like_count")
+    private Long likeCount;
+    
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
     private List<Like> likes;
 

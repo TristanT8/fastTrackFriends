@@ -18,6 +18,7 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 	
+	
 	// Method to register a new user
 		public User registerUser(User newUser, BindingResult result) {
 			// Check if a user with the same email already exists
@@ -71,4 +72,6 @@ public class UserService {
 		public User findByEmail(String email) {
 			return this.userRepo.findByEmail(email).orElse(null);
 		}
+
+
 	}
