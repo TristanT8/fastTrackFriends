@@ -29,9 +29,10 @@
 
     <h5>All Posts Below:</h5>
 
-    <div class="text-center">   
-        <a class="btn btn-outline-success" href="/post/add"> Create Post</a>
-    </div>  
+	<div class="d-flex justify-content-between px-4">
+	    <a class="btn btn-outline-success" href="/post/add" style="margin: 0 auto;">Create Post</a>
+	    <a class="btn btn-danger" href="/logout">Logout Here</a>
+	</div>  
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -59,7 +60,8 @@
                 </tr>
             </c:forEach>       
         </tbody>
-
     </table>
+        
+
 </body>
 </html>

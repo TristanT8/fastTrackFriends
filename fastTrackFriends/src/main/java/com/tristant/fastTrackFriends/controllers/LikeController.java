@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.tristant.fastTrackFriends.services.UserService;
 
 @RestController
 @RequestMapping("/likes")
+@CrossOrigin(origins = "http://localhost:8080") // Allow requests from your STS domain
 public class LikeController {
 
     private final LikeService likeService;
@@ -93,8 +95,6 @@ public class LikeController {
 
         return ResponseEntity.ok(response);
     }
-
-
 
 
 }
