@@ -8,16 +8,24 @@ import org.springframework.stereotype.Service;
 
 import com.tristant.fastTrackFriends.models.Like;
 import com.tristant.fastTrackFriends.repositories.LikeRepository;
+import com.tristant.fastTrackFriends.repositories.PostRepository;
+import com.tristant.fastTrackFriends.repositories.UserRepository;
 
 @Service
 public class LikeService {
 
     private final LikeRepository likeRepository;
+    private final UserRepository userRepository;
+    private final PostRepository postRepository;
+
 
     @Autowired
-    public LikeService(LikeRepository likeRepository) {
+    public LikeService(LikeRepository likeRepository, UserRepository userRepository, PostRepository postRepository) {
         this.likeRepository = likeRepository;
+        this.userRepository = userRepository;
+        this.postRepository = postRepository;
     }
+
 
     // Create a new like
     public Like createLike(Like like) {
@@ -70,6 +78,25 @@ public class LikeService {
     
     public List<Like> getAllLikes() {
         return (List<Like>) likeRepository.findAll();
+    }
+    
+    public int likePost(Long postId, Long userId) {
+        // Check if the user has already liked the post to prevent duplicate likes
+        Like existingLike = likeRepository.findByPostIdAndUserId(postId, userId);
+
+        if (existingLike != null) {
+            // User has already liked the post, return the current like count
+            return likeRepository.countLikesForPost(postId);
+        }
+
+        // Create a new like entry for the post and user
+        Like like = new Like();
+        like.setPost(postRepository.findById(postId).orElse(null));
+        like.setUser(userRepository.findById(userId).orElse(null));
+        likeRepository.save(like);
+
+        // Return the updated like count for the post
+        return likeRepository.countLikesForPost(postId);
     }
 
 }
