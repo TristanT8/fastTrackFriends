@@ -1,5 +1,10 @@
 package com.tristant.fastTrackFriends.controllers;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,21 +39,36 @@ public class PostController {
 	@GetMapping("/add")
 	public String newPost(@ModelAttribute("post") Post post, Model viewModel, HttpSession session) {
 		User user = uServ.findById((Long) session.getAttribute("userId"));
+		 List<String> drivers = Arrays.asList("Max Verstappen", "Charles Leclerc", "Lando Norris");
+
+	    viewModel.addAttribute("drivers", drivers);
+	    viewModel.addAttribute("post", new Post()); // Initialize an empty Post object
 		viewModel.addAttribute("user", user);
 		return "newPost.jsp";
 	}
 	
 	@PostMapping("/created")
 	public String recordPost(@Valid @ModelAttribute("post") Post post, BindingResult result, HttpSession session) {
-		if(result.hasErrors()) {
-			return "newPost.jsp";					
-		}
-		Long userId = (Long)session.getAttribute("userId");
-		User user = uServ.findById(userId);
-		post.setUser(user);
-		postServ.createPost(post);
-		return "redirect:/home";
+	    if (result.hasErrors()) {
+	        return "newPost.jsp";
+	    }
+
+	    Long userId = (Long) session.getAttribute("userId");
+	    User user = uServ.findById(userId);
+	    post.setUser(user);
+
+	    // If the selected driver is "other," use the value from otherDriver field
+	    if ("other".equals(post.getDriver())) {
+	        post.setDriver(post.getOtherDriver());
+	    }
+
+	    // Continue saving the post
+	    postServ.createPost(post);
+
+	    return "redirect:/home";
 	}
+
+
 	
 	@GetMapping("/edit/{postId}")
 	public String editPost(@PathVariable("postId") Long postId, Model model, HttpSession session) {

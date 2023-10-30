@@ -38,11 +38,12 @@
 		}
 		
 	</style>
+	
 <title>Register or Login</title>
 </head>
 
 <body class="text-center">
-    <img src="images/Screenshot (70).png" alt="WebP Image" style="width: 1600px; height: 1000px;"/>
+    <img src="images/Screenshot (70).png" alt="WebP Image" style="width: flex; height: 600px;"/>
 
 <h1>Welcome to the Fast Track Friends!!</h1>
 <h2>Please Register or Login to proceed</h2>

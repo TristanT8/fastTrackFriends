@@ -31,6 +31,10 @@ public class Post {
 	@NotBlank(message = "Driver's name must not be blank")
 	@Size(min = 5, max = 2147483647, message = "Drivers name must be at least 5 characters")
 	private String driver;
+
+	@NotBlank(message = "Driver's name must not be blank")
+	@Size(min = 5, max = 100, message = "Drivers name must be at least 5 characters")
+    private String otherDriver;
 	
 	@NotBlank(message = "Circuit name must not be blank")
 	@Size(min = 5, max = 2147483647, message = "Circuit name must be at least 5 characters")
@@ -107,5 +111,23 @@ public class Post {
 	}
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
+	}
+	public String getOtherDriver() {
+		return otherDriver;
+	}
+	public void setOtherDriver(String otherDriver) {
+		this.otherDriver = otherDriver;
+	}
+	public Long getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(Long likeCount) {
+		this.likeCount = likeCount;
+	}
+	public List<Like> getLikes() {
+		return likes;
+	}
+	public void setLikes(List<Like> likes) {
+		this.likes = likes;
 	}
 }
