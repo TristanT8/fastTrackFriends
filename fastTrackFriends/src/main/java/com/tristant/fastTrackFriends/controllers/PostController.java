@@ -1,7 +1,5 @@
 package com.tristant.fastTrackFriends.controllers;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,7 +37,9 @@ public class PostController {
 	@GetMapping("/add")
 	public String newPost(@ModelAttribute("post") Post post, Model viewModel, HttpSession session) {
 		User user = uServ.findById((Long) session.getAttribute("userId"));
-		 List<String> drivers = Arrays.asList("Max Verstappen", "Charles Leclerc", "Lando Norris");
+		 List<String> drivers = Arrays.asList("Max Verstappen", "Sergio Perez", "Charles LeCLerc", "Carlos Sainz Jr.", "Lewis Hamilton", "George Russell",
+				 "Lando Norris", "Oscar Piastri", "Daniel Ricciardo", "Yuki Tsunoda", "Alex Albon", "Logan Sargeant", "Valterri Bottas", "Zhou Guanyu",
+				 "Fernando Alonso", "Lance Stroll", "Pierre Gasly", "Esteban Ocon", "Kevin Magnussen", "Niko Hulkenberg");
 
 	    viewModel.addAttribute("drivers", drivers);
 	    viewModel.addAttribute("post", new Post()); // Initialize an empty Post object
